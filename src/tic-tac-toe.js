@@ -1,16 +1,6 @@
 class TicTacToe {
   constructor() {
     this.CurrentPlayerSymbol = 'x';
-    this.matrix = [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ];
-    this.matrixNumbers = [
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-    ];
   }
 
   transformMatrix() {
@@ -20,49 +10,6 @@ class TicTacToe {
   }
 
   getSumMatrix() {
-    this.transformMatrix();
-    let sumMatrix = [];
-    sumMatrix.push(
-      this.matrixNumbers[0][0] +
-        this.matrixNumbers[0][1] +
-        this.matrixNumbers[0][2]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[1][0] +
-        this.matrixNumbers[1][1] +
-        this.matrixNumbers[1][2]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[2][0] +
-        this.matrixNumbers[2][1] +
-        this.matrixNumbers[2][2]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[0][0] +
-        this.matrixNumbers[1][0] +
-        this.matrixNumbers[2][0]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[0][1] +
-        this.matrixNumbers[1][1] +
-        this.matrixNumbers[2][1]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[0][2] +
-        this.matrixNumbers[1][2] +
-        this.matrixNumbers[2][2]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[0][0] +
-        this.matrixNumbers[1][1] +
-        this.matrixNumbers[2][2]
-    );
-    sumMatrix.push(
-      this.matrixNumbers[0][2] +
-        this.matrixNumbers[1][1] +
-        this.matrixNumbers[2][0]
-    );
-
     return sumMatrix;
   }
 
@@ -70,9 +17,7 @@ class TicTacToe {
     return this.CurrentPlayerSymbol;
   }
 
-  toggleCurrentPlayerSymbol() {
-    return this.CurrentPlayerSymbol === 'x' ? 'o' : 'x';
-  }
+  toggleCurrentPlayerSymbol() {}
 
   nextTurn(rowIndex, columnIndex) {
     if (this.matrix[rowIndex][columnIndex] === null) {
@@ -85,26 +30,9 @@ class TicTacToe {
     return this.isDraw() || this.getWinner() != null;
   }
 
-  getWinner() {
-    const SumMatrix = this.getSumMatrix();
-    for (const el of SumMatrix) {
-      if (el === 3) {
-        return 'x';
-      } else if (el === 12) {
-        return 'o';
-      }
-    }
-    return null;
-  }
+  getWinner() {}
 
-  noMoreTurns() {
-    for (let row = 0; row < this.matrix.length; row++) {
-      for (let col = 0; col < this.matrix.length; col++) {
-        if (this.matrix[row][col] === null) return false;
-      }
-    }
-    return true;
-  }
+  noMoreTurns() {}
 
   isDraw() {
     return this.noMoreTurns() && !this.getWinner();
